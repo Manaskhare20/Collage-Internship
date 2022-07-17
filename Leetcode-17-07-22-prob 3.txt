@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {
+            ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+        vector<int> res;
+        vector<pair<string,int>> temp;
+        for(int p=0; p<queries.size(); p++){
+            temp.clear();
+            int trim = queries[p][1];
+            int k=queries[p][0];
+            
+            long long i=0;
+            for(auto num: nums){
+                string s = num.substr(num.size() - trim);
+                temp.push_back({s,i});
+                i++;
+            }
+            sort(temp.begin(),temp.end());
+            if(temp.size()>1)
+                res.push_back(temp[k-1].second);
+            else res.push_back(0);
+        }
+        return res;
+    }
+};

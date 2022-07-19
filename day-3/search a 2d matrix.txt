@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& v, int k)
+    {
+        int n = v.size(), m = v[0].size();
+        int l = 0, h = n * m-1;
+        while(l <= h)
+        {
+            int mid = (l+h)/ 2;
+            int x = mid / m, y = mid % m;
+            if(v[x][y] == k)
+                return true;
+            else if(v[x][y] > k)
+                h = mid - 1;
+            else
+                l = mid + 1;
+        }
+        return false;
+    }
+};

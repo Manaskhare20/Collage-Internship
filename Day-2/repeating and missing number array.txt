@@ -1,0 +1,28 @@
+vector<int> Solution::repeatedNumber(const vector<int> &A) {
+    vector<int>v;
+int n=A.size();
+int freq[1000000]={0};
+
+for(int i=0;i<A.size();i++){
+    freq[A[i]]++;
+    
+}
+
+for(int i=0;i<=n;i++){
+    if(freq[i]>1){
+        v.push_back(i);
+        break;
+    }
+    
+    
+}
+ for(int i=1;i<=n;i++){
+    if(freq[i]==0){
+        v.push_back(i);
+        break;
+        
+    }
+    
+}
+return v;
+}

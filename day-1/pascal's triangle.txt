@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        if(numRows==1) return {{1}};
+        vector<vector<int>> vecVec={{1},{1,1}};
+        
+        for(int i=0;i<numRows-2;i++){
+            vector<int> temp=vecVec[vecVec.size()-1];
+            vector<int> res={1};
+            for(int j=0;j<temp.size()-1;j++){
+                res.push_back(temp[j]+temp[j+1]);
+            }
+            res.push_back(1);
+            vecVec.push_back(res);
+        }
+        
+        return vecVec;
+    }
+};
